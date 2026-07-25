@@ -1,16 +1,37 @@
-# React + Vite
+# 🐾 FurEver Home
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> 🚧 **Work in Progress**
 
-Currently, two official plugins are available:
+FurEver Home is a modern and responsive pet adoption landing page built with **React**, **Vite**, and **Tailwind CSS**. The project is currently under active development as I continue adding new features and improving the user interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Current Progress
 
-## React Compiler
+- ✅ Project setup with React + Vite
+- ✅ Tailwind CSS integration
+- ✅ Responsive Navbar
+- ✅ Hero Section (In Progress)
+- ⏳ Featured Pets Section
+- ⏳ About Us Section
+- ⏳ Adoption Process
+- ⏳ Testimonials
+- ⏳ Footer
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- React.js
+- Vite
+- Tailwind CSS
+- React Icons
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📌 Planned Features
+
+- Pet Listings
+- Search & Filter
+- Strapi CMS Integration
+- Responsive Design
+- Animations
+- Dark Mode
+
+---
+
+📢 **This project is actively being developed and updated regularly.**
