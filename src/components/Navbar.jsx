@@ -1,16 +1,15 @@
 import React from "react";
-import {
-  FiSearch,
-  FiHeart,
-  FiShoppingBag,
-  FiUser,
-} from "react-icons/fi";
+import { FiSearch, FiHeart, FiShoppingBag, FiUser, FiX, FiMenu } from "react-icons/fi";
 import { FaPaw } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
+
 const Navbar = () => {
+  const [showDropdown, setShowDropdown] = React.useState(false);
+  const [menu, setMenu] = React.useState(false);
 
-    const [showDropdown, setShowDropdown] = React.useState(false);
-
+  const handleChange = () => {
+    setMenu(!menu);
+  };
   return (
     <header className="bg-white shadow-md px-6 py-4 lg:px-20">
       <div className="flex justify-between items-center">
@@ -23,36 +22,98 @@ const Navbar = () => {
         </div>
 
         {/* {Desktop menu} */}
-        <nav className="flex items-center gap-6 text-sm font-medium text-[#2f1e0e]">
-          <a href="/" className="hover:text-[#d1733d]">Home</a>
-          <div className=" relative group" onMouseEnter={() => setShowDropdown(true)} onMouseLeave={() => setShowDropdown(false)}>
-            <span className="hover:text-[#d1733d] cursor pointer flex items-center gap-1">Services
-                <span classNmae="text-xs">
-                    <IoMdArrowDropdown size={20} />
-                </span>
+        <nav className=" hidden md:flex items-center gap-6 font-medium text-[#2f1e0e]">
+          <a href="/" className="hover:text-[#d1733d]">
+            Home
+          </a>
+          <div
+            className=" relative group"
+            onMouseEnter={() => setShowDropdown(true)}
+            onMouseLeave={() => setShowDropdown(false)}
+          >
+            <span className="hover:text-[#d1733d] cursor pointer flex items-center gap-1">
+              Services
+              <span className="text-xs">
+                <IoMdArrowDropdown size={20} />
+              </span>
             </span>
             {showDropdown && (
-                <div className=" absolute top-6 left-0 bg-white shadow p-2 rounded z-10 w-40">
-                    <a href="/" className="block px-2 py-1 hover:text-[#d1733d]">Grooming</a>
-                    <a href="/" className="block px-2 py-1 hover:text-[#d1733d]">Training</a>
-                    <a href="/" className="block px-2 py-1 hover:text-[#d1733d]">Pet sitting</a>
-                </div>
+              <div className=" absolute top-6 left-0 bg-white shadow p-2 rounded z-10 w-40">
+                <a href="/" className="block px-2 py-1 hover:text-[#d1733d]">
+                  Grooming
+                </a>
+                <a href="/" className="block px-2 py-1 hover:text-[#d1733d]">
+                  Training
+                </a>
+                <a href="/" className="block px-2 py-1 hover:text-[#d1733d]">
+                  Pet sitting
+                </a>
+              </div>
             )}
           </div>
-          <a href="/" className="hover:text-[#d1733d]">About</a>
-          <a href="/" className="hover:text-[#d1733d]">Shop</a>
-          <a href="/" className="hover:text-[#d1733d]">Blog</a>
-          <a href="/" className="hover:text-[#d1733d]">Contact</a>
+          <a href="/" className="hover:text-[#d1733d]">
+            About
+          </a>
+          <a href="/" className="hover:text-[#d1733d]">
+            Shop
+          </a>
+          <a href="/" className="hover:text-[#d1733d]">
+            Blog
+          </a>
+          <a href="/" className="hover:text-[#d1733d]">
+            Contact
+          </a>
         </nav>
 
         {/* {icons} */}
-        <div className="flex gap-3 text-[#d1733d] text-lg">
+        <div className=" hidden md:flex gap-3 text-[#d1733d] text-lg">
           {[FiSearch, FiHeart, FiShoppingBag, FiUser].map((Icon, idx) => (
-            <span key={idx} className="p2 border border-[#d1733d] rounded-full cursor-pointer hover:bg-[#d1733d] hover:text-white transition">
+            <span
+              key={idx}
+              className="p2 border border-[#d1733d] rounded-full cursor-pointer hover:bg-[#d1733d] hover:text-white transition"
+            >
               <Icon />
             </span>
           ))}
         </div>
+        {/* {Hamburger menu} */}
+        <div className="md:hidden flex items-center">
+            {menu ? <FiX size={25} onClick={handleChange} /> : <FiMenu size={25} onClick={handleChange} />}</div>
+      </div>
+
+      {/* {Mobile menu} */}
+      <div className={`${menu ? "translate-x-0" : "translate-x-full"} lg:hidden flex flex-col absolute bg-[#f5eee6] text-[#6b4226] left-0 top-16 font-semibold text-2xl pt-8 px-5 pb-4 gap-8 w-full h-fit transition-transform duration-300`}>
+          <a href="/" className="hover:text-[#d1733d]">Home</a>
+          <details className="group">
+            <summary className="cursor-pointer hover:text-[#d1733d]">
+                Services
+            </summary>
+                <div className="pl-4 mt-1 flex flex-col gap-2.5">
+                    <a href="/" className="hover:text-[#d1733d]">
+                    Grooming
+                    </a>
+                    <a href="/" className="hover:text-[#d1733d]">
+                    Training
+                    </a>
+                    <a href="/" className="hover:text-[#d1733d]">
+                    Pet sitting
+                    </a>
+                </div>
+          </details>
+          <a href="/" className="hover:text-[#d1733d]">About </a>
+          <a href="/" className="hover:text-[#d1733d]">Shop </a>
+          <a href="/" className="hover:text-[#d1733d]">Blog </a>
+          <a href="/" className="hover:text-[#d1733d]">Contact</a>
+          <div className="flex gap-3 mt-2">
+            {[FiSearch, FiHeart, FiShoppingBag, FiUser].map((Icon, idx) => (
+            <span
+              key={idx}
+              className="p2 border border-[#d1733d] rounded-full cursor-pointer hover:bg-[#d1733d] hover:text-white transition"
+            >
+              <Icon />
+            </span>
+          ))}
+          </div>
       </div>
     </header>
   );
