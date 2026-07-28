@@ -11,7 +11,7 @@ const Hero = () => {
                 Your <span className=" text-[#ff7d4e]"> Pet </span> Deserves <br />The Best Family.
             </h1>
         <div className=" bg-[#ff7d4e] text-white px-3.5 md:px-6 py-3 rounded-lg font-semibold shadow hover bg-[#e46637] transition">
-        <button>
+        <button className=" bg-[#1e1e1e] text-white px-3.5 md:px-6 py-3 rounded-lg font-semibold shadow hover:bg-[#333] transition">
             Make an Appointment
         </button>
         <button>
@@ -21,8 +21,8 @@ const Hero = () => {
     </div>
 
     {/* right img */}
-    <div>
-        <img src={img} alt="dog img" /> 
+    <div className=" w-full md:w-2/5">
+        <img src={img} alt="dog img" className="rounded-full" /> 
     </div>
     </section>
   );
