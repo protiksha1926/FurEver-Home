@@ -70,7 +70,7 @@ const Navbar = () => {
           {[FiSearch, FiHeart, FiShoppingBag, FiUser].map((Icon, idx) => (
             <span
               key={idx}
-              className="p2 border border-[#d1733d] rounded-full cursor-pointer hover:bg-[#d1733d] hover:text-white transition"
+              className="p-2 border border-[#d1733d] rounded-full cursor-pointer hover:bg-[#d1733d] hover:text-white transition"
             >
               <Icon />
             </span>

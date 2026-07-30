@@ -1,7 +1,6 @@
-import React from 'react'
+import 'react'
 import { GiDogHouse, GiSittingDog, GiDogBowl } from "react-icons/gi";
 import { FaUserMd, FaPaw, FaTruck } from "react-icons/fa";
-
 const petServices = [
   {
     icon: <GiDogHouse size={40} />,
