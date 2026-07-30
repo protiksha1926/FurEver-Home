@@ -1,5 +1,5 @@
 import React from "react";
-import img from "../assets/About.png";
+import img from "../assets/about_puppy.png";
 export const AboutUs = () => {
   return (
     <section className=" bg-[#fdf7f2] py-20 px-6 md:px-14">
@@ -21,7 +21,7 @@ export const AboutUs = () => {
         </div>
         {/* Image section */}
         <div className=" flex-1">
-          <img src={img} alt="img" />
+          <img src={img} alt="img" className=" w-full rounded-2xl border border-[#e8d7c8] bg-white" />
         </div>
       </div>
     </section>
