@@ -1,4 +1,4 @@
-import React from "react";
+import "react";
 import img from "../assets/about_puppy.png";
 export const AboutUs = () => {
   return (

@@ -1,4 +1,4 @@
-import React from 'react'
+import 'react'
 import { FaUserMd, FaRegSmile, FaTruck, FaShieldAlt } from "react-icons/fa";
 
 const reasons = [
@@ -31,7 +31,7 @@ const WhyChooseUs = () => {
         <p className=" text-center text-[#7c5a3b] max-w-2xl mx-auto mb-16 text-[17px]">
             At Scooby, we go beyond just pet care — we build relationships. Here's what makes us different (and your pet's favorite).
         </p>
-        <div className=" grid grid-cols-1 sm:grid-cols-2 lg-grid-cols-4 gap-10">
+        <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             {reasons.map((reason, index) => (
                 <div 
                 key={index}
