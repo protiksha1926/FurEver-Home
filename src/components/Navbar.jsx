@@ -1,121 +1,114 @@
-import React from "react";
-import { FiSearch, FiHeart, FiShoppingBag, FiUser, FiX, FiMenu } from "react-icons/fi";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiSearch, FiHeart, FiShoppingBag, FiUser, FiX, FiMenu, FiChevronDown } from "react-icons/fi";
 import { FaPaw } from "react-icons/fa";
-import { IoMdArrowDropdown } from "react-icons/io";
+import { Scissors, Stethoscope, GraduationCap, Dog } from "lucide-react";
 
 const Navbar = () => {
-  const [showDropdown, setShowDropdown] = React.useState(false);
-  const [menu, setMenu] = React.useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const handleChange = () => {
-    setMenu(!menu);
-  };
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const serviceCategories = [
+    { icon: Scissors, title: "Pet Grooming", desc: "Spa & styling packages", href: "#grooming", badge: "Popular" },
+    { icon: Stethoscope, title: "Vet Consultations", desc: "Licensed checkups", href: "#vet" },
+    { icon: GraduationCap, title: "Dog Training", desc: "Obedience lessons", href: "#training" },
+    { icon: Dog, title: "Pet Sitting", desc: "In-home caregivers", href: "#sitting" },
+  ];
+
   return (
-    <header className="bg-white shadow-md px-6 py-4 lg:px-20">
-      <div className="flex justify-between items-center">
-        {/* {logo} */}
-        <div className=" flex items-center gap-2 text-2xl font-bold text-gray-800">
-          <span className="text-2xl rounded-full bg-[#F97316] text-white p-1">
-            <FaPaw />
-          </span>
-          <span>Scooby</span>
-        </div>
-
-        {/* {Desktop menu} */}
-        <nav className=" hidden md:flex items-center gap-6 font-medium text-[#2f1e0e]">
-          <a href="/" className="hover:text-[#d1733d]">
-            Home
-          </a>
-          <div
-            className=" relative group"
-            onMouseEnter={() => setShowDropdown(true)}
-            onMouseLeave={() => setShowDropdown(false)}
-          >
-            <span className="hover:text-[#d1733d] cursor pointer flex items-center gap-1">
-              Services
-              <span className="text-xs">
-                <IoMdArrowDropdown size={20} />
-              </span>
-            </span>
-            {showDropdown && (
-              <div className=" absolute top-6 left-0 bg-white shadow p-2 rounded z-10 w-40">
-                <a href="/" className="block px-2 py-1 hover:text-[#d1733d]">
-                  Grooming
-                </a>
-                <a href="/" className="block px-2 py-1 hover:text-[#d1733d]">
-                  Training
-                </a>
-                <a href="/" className="block px-2 py-1 hover:text-[#d1733d]">
-                  Pet sitting
-                </a>
-              </div>
-            )}
-          </div>
-          <a href="/" className="hover:text-[#d1733d]">
-            About
-          </a>
-          <a href="/" className="hover:text-[#d1733d]">
-            Shop
-          </a>
-          <a href="/" className="hover:text-[#d1733d]">
-            Blog
-          </a>
-          <a href="/" className="hover:text-[#d1733d]">
-            Contact
-          </a>
-        </nav>
-
-        {/* {icons} */}
-        <div className=" hidden md:flex gap-3 text-[#d1733d] text-lg">
-          {[FiSearch, FiHeart, FiShoppingBag, FiUser].map((Icon, idx) => (
-            <span
-              key={idx}
-              className="p-2 border border-[#d1733d] rounded-full cursor-pointer hover:bg-[#d1733d] hover:text-white transition"
+    <div className="sticky top-0 z-50 w-full px-6 lg:px-12 py-3 transition-all duration-300">
+      <header className={`max-w-7xl mx-auto rounded-full border bg-white/95 backdrop-blur-md transition-all duration-300 ${
+        scrolled ? "shadow-lg border-[#e8d7c8] py-2 px-6" : "border-[#e8d7c8]/80 py-2.5 px-6"
+      }`}>
+        <div className="flex justify-between items-center">
+          
+          {/* Prominent & Distinct Brand Logo */}
+          <a href="/" className="flex items-center gap-3 group shrink-0">
+            <motion.div 
+              whileHover={{ rotate: 12, scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center justify-center h-10 w-10 rounded-2xl bg-gradient-to-tr from-[#ff7d4e] to-[#e46637] text-white shadow-md shadow-[#ff7d4e]/30"
             >
-              <Icon />
+              <FaPaw className="text-lg" />
+            </motion.div>
+            
+            <span className="text-2xl font-extrabold text-[#1e1e1e] tracking-tight group-hover:text-[#ff7d4e] transition-colors leading-none">
+              Scooby<span className="text-[#ff7d4e]">.</span>
             </span>
-          ))}
-        </div>
-        {/* {Hamburger menu} */}
-        <div className="md:hidden flex items-center">
-            {menu ? <FiX size={25} onClick={handleChange} /> : <FiMenu size={25} onClick={handleChange} />}</div>
-      </div>
+          </a>
 
-      {/* {Mobile menu} */}
-      <div className={`${menu ? "translate-x-0" : "translate-x-full"} lg:hidden flex flex-col absolute bg-[#f5eee6] text-[#6b4226] left-0 top-16 font-semibold text-2xl pt-8 px-5 pb-4 gap-8 w-full h-fit transition-transform duration-300`}>
-          <a href="/" className="hover:text-[#d1733d]">Home</a>
-          <details className="group">
-            <summary className="cursor-pointer hover:text-[#d1733d]">
-                Services
-            </summary>
-                <div className="pl-4 mt-1 flex flex-col gap-2.5">
-                    <a href="/" className="hover:text-[#d1733d]">
-                    Grooming
-                    </a>
-                    <a href="/" className="hover:text-[#d1733d]">
-                    Training
-                    </a>
-                    <a href="/" className="hover:text-[#d1733d]">
-                    Pet sitting
-                    </a>
-                </div>
-          </details>
-          <a href="/" className="hover:text-[#d1733d]">About </a>
-          <a href="/" className="hover:text-[#d1733d]">Shop </a>
-          <a href="/" className="hover:text-[#d1733d]">Blog </a>
-          <a href="/" className="hover:text-[#d1733d]">Contact</a>
-          <div className="flex gap-3 mt-2">
-            {[FiSearch, FiHeart, FiShoppingBag, FiUser].map((Icon, idx) => (
-            <span
-              key={idx}
-              className="p2 border border-[#d1733d] rounded-full cursor-pointer hover:bg-[#d1733d] hover:text-white transition"
-            >
-              <Icon />
-            </span>
-          ))}
+          {/* Nav Links */}
+          <nav className="hidden md:flex items-center gap-1 font-semibold text-[#1e1e1e] text-xs uppercase tracking-wide">
+            <a href="#" className="px-3.5 py-1.5 rounded-full hover:bg-[#ff7d4e]/10 hover:text-[#ff7d4e] transition-all">Home</a>
+            
+            <div className="relative" onMouseEnter={() => setShowDropdown(true)} onMouseLeave={() => setShowDropdown(false)}>
+              <button className="px-3.5 py-1.5 rounded-full flex items-center gap-1 hover:bg-[#ff7d4e]/10 hover:text-[#ff7d4e] transition-all">
+                Services <FiChevronDown className={`transition-transform ${showDropdown ? "rotate-180 text-[#ff7d4e]" : ""}`} />
+              </button>
+
+              <AnimatePresence>
+                {showDropdown && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 6 }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 bg-white border border-[#e8d7c8] shadow-xl rounded-2xl p-2 z-50 capitalize"
+                  >
+                    {serviceCategories.map((item, idx) => {
+                      const IconComp = item.icon;
+                      return (
+                        <a key={idx} href={item.href} className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#fff4ee] group">
+                          <div className="h-8 w-8 rounded-lg bg-[#ff7d4e]/10 text-[#ff7d4e] flex items-center justify-center shrink-0">
+                            <IconComp className="h-4 w-4" />
+                          </div>
+                          <div>
+                            <p className="text-xs font-bold text-[#1e1e1e] group-hover:text-[#ff7d4e]">{item.title}</p>
+                            <p className="text-[11px] text-gray-500 font-normal">{item.desc}</p>
+                          </div>
+                        </a>
+                      );
+                    })}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <a href="#about" className="px-3.5 py-1.5 rounded-full hover:bg-[#ff7d4e]/10 hover:text-[#ff7d4e] transition-all">About</a>
+            <a href="#shop" className="px-3.5 py-1.5 rounded-full hover:bg-[#ff7d4e]/10 hover:text-[#ff7d4e] transition-all">Shop</a>
+            <a href="#blog" className="px-3.5 py-1.5 rounded-full hover:bg-[#ff7d4e]/10 hover:text-[#ff7d4e] transition-all">Blog</a>
+            <a href="#contact" className="px-3.5 py-1.5 rounded-full hover:bg-[#ff7d4e]/10 hover:text-[#ff7d4e] transition-all">Contact</a>
+          </nav>
+
+          {/* Right Action Icons */}
+          <div className="hidden lg:flex items-center gap-1.5">
+            <button className="p-2 rounded-full text-[#1e1e1e] hover:bg-[#ff7d4e]/10 hover:text-[#ff7d4e]"><FiSearch className="text-base" /></button>
+            <button className="p-2 rounded-full text-[#1e1e1e] hover:bg-[#ff7d4e]/10 hover:text-[#ff7d4e] relative">
+              <FiHeart className="text-base" />
+              <span className="absolute top-0.5 right-0.5 h-3.5 w-3.5 bg-[#ff7d4e] text-white text-[9px] font-bold rounded-full flex items-center justify-center">2</span>
+            </button>
+            <button className="p-2 rounded-full text-[#1e1e1e] hover:bg-[#ff7d4e]/10 hover:text-[#ff7d4e] relative">
+              <FiShoppingBag className="text-base" />
+              <span className="absolute top-0.5 right-0.5 h-3.5 w-3.5 bg-[#ff7d4e] text-white text-[9px] font-bold rounded-full flex items-center justify-center">3</span>
+            </button>
+            <button className="p-2 rounded-full text-[#1e1e1e] hover:bg-[#ff7d4e]/10 hover:text-[#ff7d4e] mr-2"><FiUser className="text-base" /></button>
+            
+            <a href="#book" className="bg-[#1e1e1e] hover:bg-[#ff7d4e] text-white font-semibold text-xs px-4 py-2 rounded-full transition-colors">
+              Book Appointment
+            </a>
           </div>
-      </div>
-    </header>
+
+          {/* Mobile Menu Toggle */}
+          <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden p-1.5 text-[#1e1e1e]">
+            {menuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+          </button>
+        </div>
+      </header>
+    </div>
   );
 };
 
