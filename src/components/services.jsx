@@ -43,6 +43,33 @@ const petServices = [
   },
 ];
 
+// 🐾 Walking Paw Print Steps (Spanning across the whole canvas with higher visibility)
+const activeWalkingTrail = [
+  // Top Header Area Trail
+  { id: 1, top: "8%", left: "5%", size: "text-4xl", rot: "-rotate-45", delay: 0 },
+  { id: 2, top: "14%", left: "12%", size: "text-5xl", rot: "-rotate-15", delay: 0.5 },
+  { id: 3, top: "18%", left: "22%", size: "text-4xl", rot: "rotate-15", delay: 1.0 },
+
+  // Middle Top & Center Gaps
+  { id: 4, top: "28%", left: "38%", size: "text-5xl", rot: "rotate-30", delay: 1.5 },
+  { id: 5, top: "34%", left: "48%", size: "text-4xl", rot: "rotate-10", delay: 2.0 },
+  { id: 6, top: "38%", left: "62%", size: "text-5xl", rot: "-rotate-20", delay: 2.5 },
+
+  // Right Side Upper Trail
+  { id: 7, top: "22%", left: "85%", size: "text-6xl", rot: "rotate-45", delay: 3.0 },
+  { id: 8, top: "35%", left: "92%", size: "text-5xl", rot: "rotate-20", delay: 3.5 },
+
+  // Lower Left & Bottom Trail
+  { id: 9, top: "58%", left: "4%", size: "text-5xl", rot: "-rotate-30", delay: 4.0 },
+  { id: 10, top: "72%", left: "10%", size: "text-6xl", rot: "-rotate-10", delay: 4.5 },
+  { id: 11, top: "84%", left: "25%", size: "text-5xl", rot: "rotate-25", delay: 5.0 },
+
+  // Bottom Center to Right
+  { id: 12, top: "88%", left: "55%", size: "text-6xl", rot: "rotate-15", delay: 5.5 },
+  { id: 13, top: "82%", left: "78%", size: "text-5xl", rot: "-rotate-20", delay: 6.0 },
+  { id: 14, top: "90%", left: "90%", size: "text-6xl", rot: "-rotate-40", delay: 6.5 },
+];
+
 export const Services = () => {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-[#fdf7f2] via-[#f9f0e8] to-[#fdf7f2] py-24 px-6 md:px-14 border-b border-[#e8d7c8]/60">
@@ -50,45 +77,34 @@ export const Services = () => {
       {/* 🐾 Subtle Black Dot Grid Texture */}
       <div className="absolute inset-0 opacity-[0.035] pointer-events-none mix-blend-multiply bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:16px_16px]" />
 
-      {/* Decorative Warm Glows */}
+      {/* Decorative Glows */}
       <div className="absolute top-10 left-1/2 -translate-x-1/2 h-96 w-[45rem] rounded-full bg-[#f3ded0]/40 blur-3xl pointer-events-none" />
 
-      {/* 🐾 Requested Center Subtle Paw Watermark */}
-      <div className="absolute top-24 left-1/2 -translate-x-1/2 text-[#e07a5f]/5 pointer-events-none text-6xl">
-        🐾
-      </div>
-
-      {/* 🐾 Floating Black Paw Print 1 (Top Left) */}
-      <motion.div 
-        animate={{ y: [0, -12, 0], rotate: [-12, -4, -12] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-16 left-[6%] text-black/15 pointer-events-none text-5xl z-0"
-      >
-        🐾
-      </motion.div>
-
-      {/* 🐾 Floating Black Paw Print 2 (Bottom Right) */}
-      <motion.div 
-        animate={{ y: [0, 14, 0], rotate: [15, 5, 15] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-16 right-[6%] text-black/20 pointer-events-none text-6xl z-0"
-      >
-        🐾
-      </motion.div>
-
-      {/* 🐾 Floating Black Paw Print 3 (Middle Accent) */}
-      <motion.div 
-        animate={{ y: [0, -10, 0], scale: [1, 1.05, 1] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/2 right-[12%] text-black/15 pointer-events-none text-4xl z-0"
-      >
-        🐾
-      </motion.div>
-
-      {/* 🐾 Large Black Paw Background Watermark */}
-      <div className="absolute top-1/3 left-[2%] text-black/[0.07] pointer-events-none z-0 -rotate-12 text-9xl">
-        🐾
-      </div>
+      {/* 🐾 Active Infinite Walking Paw Prints (Crisp & Visible) */}
+      {activeWalkingTrail.map((paw) => (
+        <motion.div
+          key={paw.id}
+          style={{ top: paw.top, left: paw.left }}
+          className={`absolute ${paw.size} ${paw.rot} pointer-events-none z-0 select-none`}
+          initial={{ opacity: 0, scale: 0.3 }}
+          animate={{
+            opacity: [0, 0.4, 0.4, 0],
+            scale: [0.5, 1, 1, 0.85],
+            y: [0, -4, -4, -8],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            repeatDelay: 4,
+            delay: paw.delay,
+            ease: "easeInOut",
+          }}
+        >
+          <span className="text-black/35 drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] block">
+            🐾
+          </span>
+        </motion.div>
+      ))}
 
       <div className="max-w-7xl mx-auto relative z-10">
         
@@ -115,7 +131,7 @@ export const Services = () => {
               key={index}
               whileHover={{ y: -6, scale: 1.01 }}
               transition={{ duration: 0.2 }}
-              className="group bg-white/70 p-7 rounded-3xl border border-[#e8d7c8]/80 shadow-sm hover:shadow-xl hover:shadow-[#e07a5f]/10 hover:border-[#e07a5f]/40 backdrop-blur-sm transition-all duration-300 flex flex-col justify-between cursor-pointer"
+              className="group bg-white/70 p-7 rounded-3xl border border-[#e8d7c8]/80 shadow-sm hover:shadow-xl hover:shadow-[#e07a5f]/10 hover:border-[#e07a5f]/40 backdrop-blur-sm transition-all duration-300 flex flex-col justify-between cursor-pointer relative z-10"
             >
               <div>
                 <div className="flex items-center justify-between mb-5">
