@@ -43,44 +43,46 @@ const petServices = [
   },
 ];
 
-// 🐾 Walking Paw Print Steps (Spanning across the whole canvas with higher visibility)
+// 🐾 Walking Paw Steps (Bridging directly from Hero down into Services)
 const activeWalkingTrail = [
-  // Top Header Area Trail
-  { id: 1, top: "8%", left: "5%", size: "text-4xl", rot: "-rotate-45", delay: 0 },
-  { id: 2, top: "14%", left: "12%", size: "text-5xl", rot: "-rotate-15", delay: 0.5 },
-  { id: 3, top: "18%", left: "22%", size: "text-4xl", rot: "rotate-15", delay: 1.0 },
+  // Section Bridge Steps (Crossing over top boundary)
+  { id: 1, top: "2%", left: "18%", size: "text-4xl", rot: "-rotate-30", delay: 0 },
+  { id: 2, top: "6%", left: "24%", size: "text-5xl", rot: "-rotate-10", delay: 0.5 },
 
-  // Middle Top & Center Gaps
-  { id: 4, top: "28%", left: "38%", size: "text-5xl", rot: "rotate-30", delay: 1.5 },
-  { id: 5, top: "34%", left: "48%", size: "text-4xl", rot: "rotate-10", delay: 2.0 },
-  { id: 6, top: "38%", left: "62%", size: "text-5xl", rot: "-rotate-20", delay: 2.5 },
+  // Header & Grid Entrance
+  { id: 3, top: "14%", left: "8%", size: "text-5xl", rot: "-rotate-25", delay: 1.0 },
+  { id: 4, top: "24%", left: "42%", size: "text-4xl", rot: "rotate-20", delay: 1.5 },
+  { id: 5, top: "32%", left: "54%", size: "text-5xl", rot: "rotate-35", delay: 2.0 },
 
   // Right Side Upper Trail
-  { id: 7, top: "22%", left: "85%", size: "text-6xl", rot: "rotate-45", delay: 3.0 },
-  { id: 8, top: "35%", left: "92%", size: "text-5xl", rot: "rotate-20", delay: 3.5 },
+  { id: 6, top: "18%", left: "86%", size: "text-6xl", rot: "rotate-45", delay: 2.5 },
+  { id: 7, top: "36%", left: "92%", size: "text-5xl", rot: "rotate-15", delay: 3.0 },
 
   // Lower Left & Bottom Trail
-  { id: 9, top: "58%", left: "4%", size: "text-5xl", rot: "-rotate-30", delay: 4.0 },
-  { id: 10, top: "72%", left: "10%", size: "text-6xl", rot: "-rotate-10", delay: 4.5 },
-  { id: 11, top: "84%", left: "25%", size: "text-5xl", rot: "rotate-25", delay: 5.0 },
+  { id: 8, top: "60%", left: "4%", size: "text-5xl", rot: "-rotate-30", delay: 3.5 },
+  { id: 9, top: "74%", left: "10%", size: "text-6xl", rot: "-rotate-10", delay: 4.0 },
+  { id: 10, top: "86%", left: "26%", size: "text-5xl", rot: "rotate-25", delay: 4.5 },
 
   // Bottom Center to Right
-  { id: 12, top: "88%", left: "55%", size: "text-6xl", rot: "rotate-15", delay: 5.5 },
-  { id: 13, top: "82%", left: "78%", size: "text-5xl", rot: "-rotate-20", delay: 6.0 },
-  { id: 14, top: "90%", left: "90%", size: "text-6xl", rot: "-rotate-40", delay: 6.5 },
+  { id: 11, top: "88%", left: "55%", size: "text-6xl", rot: "rotate-15", delay: 5.0 },
+  { id: 12, top: "82%", left: "78%", size: "text-5xl", rot: "-rotate-20", delay: 5.5 },
+  { id: 13, top: "92%", left: "90%", size: "text-6xl", rot: "-rotate-40", delay: 6.0 },
 ];
 
 export const Services = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#fdf7f2] via-[#f9f0e8] to-[#fdf7f2] py-24 px-6 md:px-14 border-b border-[#e8d7c8]/60">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#f9ede2] via-[#fdf7f2] to-[#f9ede2] pt-20 pb-24 px-6 md:px-14 border-b border-[#e8d7c8]/60">
       
+      {/* 🌊 Seamless Top Organic Curve Transition from Hero */}
+      <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-[#f9ede2] to-transparent pointer-events-none z-10" />
+
       {/* 🐾 Subtle Black Dot Grid Texture */}
       <div className="absolute inset-0 opacity-[0.035] pointer-events-none mix-blend-multiply bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:16px_16px]" />
 
-      {/* Decorative Glows */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 h-96 w-[45rem] rounded-full bg-[#f3ded0]/40 blur-3xl pointer-events-none" />
+      {/* Warm Soft Center Glow */}
+      <div className="absolute top-12 left-1/2 -translate-x-1/2 h-[32rem] w-[50rem] rounded-full bg-gradient-to-b from-[#e07a5f]/15 via-[#f2cc8f]/20 to-transparent blur-3xl pointer-events-none" />
 
-      {/* 🐾 Active Infinite Walking Paw Prints (Crisp & Visible) */}
+      {/* 🐾 Active Walking Paw Prints (Connecting directly from top down) */}
       {activeWalkingTrail.map((paw) => (
         <motion.div
           key={paw.id}
@@ -95,7 +97,7 @@ export const Services = () => {
           transition={{
             duration: 3,
             repeat: Infinity,
-            repeatDelay: 4,
+            repeatDelay: 3.5,
             delay: paw.delay,
             ease: "easeInOut",
           }}
@@ -110,7 +112,7 @@ export const Services = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
-          <span className="inline-flex items-center gap-2 border border-[#d6bda8] bg-[#f5e9df]/60 text-[#5a3b1f] px-3.5 py-1 text-xs font-semibold rounded-full backdrop-blur-sm shadow-sm">
+          <span className="inline-flex items-center gap-2 border border-[#d6bda8] bg-white/80 text-[#5a3b1f] px-3.5 py-1 text-xs font-semibold rounded-full backdrop-blur-md shadow-sm">
             <Sparkles className="h-3.5 w-3.5 text-[#e07a5f]" />
             <span>Tail-Wagging Solutions</span>
           </span>
@@ -131,7 +133,7 @@ export const Services = () => {
               key={index}
               whileHover={{ y: -6, scale: 1.01 }}
               transition={{ duration: 0.2 }}
-              className="group bg-white/70 p-7 rounded-3xl border border-[#e8d7c8]/80 shadow-sm hover:shadow-xl hover:shadow-[#e07a5f]/10 hover:border-[#e07a5f]/40 backdrop-blur-sm transition-all duration-300 flex flex-col justify-between cursor-pointer relative z-10"
+              className="group bg-white/80 p-7 rounded-3xl border border-[#e8d7c8]/80 shadow-sm hover:shadow-xl hover:shadow-[#e07a5f]/15 hover:border-[#e07a5f]/40 backdrop-blur-md transition-all duration-300 flex flex-col justify-between cursor-pointer relative z-10"
             >
               <div>
                 <div className="flex items-center justify-between mb-5">

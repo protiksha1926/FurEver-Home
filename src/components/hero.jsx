@@ -1,45 +1,63 @@
-import "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, Star, ShieldCheck, Play, Heart, Sparkle } from "lucide-react";
+import { Sparkles, ArrowRight, Star, ShieldCheck, Play, Heart, Sparkle, Bone } from "lucide-react";
 import img from "../assets/dog.jpg";
+
+// 🐾 Active Walking Paw Trail
+const heroPawTrail = [
+  { id: 1, top: "10%", left: "5%", size: "text-4xl", rot: "-rotate-45", delay: 0 },
+  { id: 2, top: "20%", left: "12%", size: "text-5xl", rot: "-rotate-15", delay: 0.6 },
+  { id: 3, top: "72%", left: "6%", size: "text-5xl", rot: "rotate-20", delay: 1.2 },
+  { id: 4, top: "82%", left: "16%", size: "text-4xl", rot: "rotate-45", delay: 1.8 },
+  { id: 5, top: "14%", right: "10%", size: "text-5xl", rot: "rotate-30", delay: 2.4 },
+  { id: 6, top: "76%", right: "6%", size: "text-6xl", rot: "-rotate-25", delay: 3.0 },
+];
 
 const Hero = () => {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-[#fff0e5] via-[#fdf7f2] to-[#f9ede2] pt-12 pb-24 px-6 lg:px-16 border-b border-[#e8d7c8]/60">
       
-      {/* 🐾 Subtle Paw Print Background Texture */}
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-multiply bg-[radial-gradient(#5a3b1f_1px,transparent_1px)] [background-size:16px_16px]" />
+      {/* 🐾 Subtle Black Dot Grid Texture */}
+      <div className="absolute inset-0 opacity-[0.035] pointer-events-none mix-blend-multiply bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:16px_16px]" />
 
-      {/* Floating SVG Paws Background Decoration */}
-      <motion.div 
-        animate={{ y: [0, -12, 0], rotate: [0, 8, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-12 left-[10%] text-[#e07a5f]/20 pointer-events-none z-0"
+      {/* 🦴 Floating Animated Bone Accent */}
+      <motion.div
+        animate={{ 
+          y: [0, -12, 0], 
+          rotate: [0, 15, -10, 0],
+          scale: [1, 1.08, 1] 
+        }}
+        transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+        className="absolute top-10 right-[12%] text-[#e07a5f]/20 pointer-events-none z-0"
       >
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-3.5-1c-.83 0-1.5.67-1.5 1.5S7.67 12 8.5 12s1.5-.67 1.5-1.5S9.33 9 8.5 9zm7 0c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5S16.33 9 15.5 9zm-7-4c-.83 0-1.5.67-1.5 1.5S7.67 8 8.5 8s1.5-.67 1.5-1.5S9.33 5 8.5 5zm7 0c-.83 0-1.5.67-1.5 1.5S14.67 8 15.5 8s1.5-.67 1.5-1.5S16.33 5 15.5 5z"/>
-        </svg>
+        <Bone className="h-12 w-12" />
       </motion.div>
 
-      <motion.div 
-        animate={{ y: [0, 15, 0], rotate: [0, -10, 0] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-16 right-[8%] text-[#e07a5f]/20 pointer-events-none z-0"
-      >
-        <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-3.5-1c-.83 0-1.5.67-1.5 1.5S7.67 12 8.5 12s1.5-.67 1.5-1.5S9.33 9 8.5 9zm7 0c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5S16.33 9 15.5 9zm-7-4c-.83 0-1.5.67-1.5 1.5S7.67 8 8.5 8s1.5-.67 1.5-1.5S9.33 5 8.5 5zm7 0c-.83 0-1.5.67-1.5 1.5S14.67 8 15.5 8s1.5-.67 1.5-1.5S16.33 5 15.5 5z"/>
-        </svg>
-      </motion.div>
-
-      {/* Decorative Dashed Ring Accent */}
-      <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] border-2 border-dashed border-[#e07a5f]/15 rounded-full pointer-events-none" />
-
-      {/* Glowing Gradient Spotlight Orbs */}
-      <motion.div 
-        animate={{ scale: [1, 1.2, 1], x: [0, 30, 0], y: [0, -20, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-10 -right-10 h-[36rem] w-[36rem] rounded-full bg-gradient-to-br from-[#e07a5f]/25 via-[#f2cc8f]/20 to-transparent blur-3xl pointer-events-none" 
-      />
+      {/* 🐾 Active Walking Paw Prints */}
+      {heroPawTrail.map((paw) => (
+        <motion.div
+          key={paw.id}
+          style={{ top: paw.top, left: paw.left, right: paw.right }}
+          className={`absolute ${paw.size} ${paw.rot} pointer-events-none z-0 select-none`}
+          initial={{ opacity: 0, scale: 0.3 }}
+          animate={{
+            opacity: [0, 0.4, 0.4, 0],
+            scale: [0.5, 1, 1, 0.85],
+            y: [0, -4, -4, -8],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            repeatDelay: 3.5,
+            delay: paw.delay,
+            ease: "easeInOut",
+          }}
+        >
+          <span className="text-black/35 drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] block">
+            🐾
+          </span>
+        </motion.div>
+      ))}
 
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
         
@@ -51,7 +69,7 @@ const Hero = () => {
           className="w-full lg:w-[42%] space-y-6"
         >
           {/* Eyebrow Pill Badge */}
-          <span className="inline-flex items-center gap-2 border border-[#d6bda8] bg-white/80 text-[#5a3b1f] px-3.5 py-1 text-xs font-semibold rounded-full backdrop-blur-md shadow-sm">
+          <span className="inline-flex items-center gap-2 border border-[#d6bda8] bg-white/90 text-[#5a3b1f] px-3.5 py-1 text-xs font-semibold rounded-full backdrop-blur-md shadow-sm">
             <Sparkles className="h-3.5 w-3.5 text-[#e07a5f]" />
             <span>Trusted Pet Care, Tailored With Love</span>
           </span>
@@ -70,10 +88,10 @@ const Hero = () => {
           {/* Action Buttons */}
           <div className="pt-2 flex flex-wrap gap-4 items-center">
             <motion.button 
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.04, y: -2 }}
+              whileTap={{ scale: 0.96 }}
               transition={{ type: "spring", stiffness: 350 }}
-              className="flex items-center gap-2 bg-[#e07a5f] hover:bg-[#d0674c] text-white px-7 py-3.5 rounded-xl font-medium shadow-lg shadow-[#e07a5f]/25 transition-all cursor-pointer"
+              className="flex items-center gap-2 bg-[#e07a5f] hover:bg-[#d0674c] text-white px-7 py-3.5 rounded-xl font-medium shadow-xl shadow-[#e07a5f]/30 transition-all cursor-pointer"
             >
               Make an Appointment 
               <motion.span
@@ -85,10 +103,10 @@ const Hero = () => {
             </motion.button>
 
             <motion.button 
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.04, y: -2 }}
+              whileTap={{ scale: 0.96 }}
               transition={{ type: "spring", stiffness: 350 }}
-              className="flex items-center gap-2 bg-[#5a3b1f] hover:bg-[#432b17] text-white px-7 py-3.5 rounded-xl font-medium shadow-lg shadow-[#5a3b1f]/15 transition-all cursor-pointer"
+              className="flex items-center gap-2 bg-[#5a3b1f] hover:bg-[#432b17] text-white px-7 py-3.5 rounded-xl font-medium shadow-xl shadow-[#5a3b1f]/20 transition-all cursor-pointer"
             >
               <Play className="h-4 w-4 fill-current text-white" /> Watch Story
             </motion.button>
@@ -115,15 +133,19 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="w-full lg:w-[58%] flex justify-center relative"
         >
-          {/* Decorative Backing Accent Shadow Frame */}
-          <div className="absolute -inset-2 bg-gradient-to-r from-[#e07a5f]/20 to-[#f2cc8f]/30 rounded-[32px] blur-lg pointer-events-none" />
+          {/* 🎨 Focused Vibrant Glow Behind the Image Frame */}
+          <motion.div 
+            animate={{ scale: [1, 1.15, 1], rotate: [0, 5, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -inset-6 rounded-[40px] bg-gradient-to-r from-[#e07a5f]/45 via-[#f4a261]/40 to-[#f2cc8f]/50 blur-2xl pointer-events-none" 
+          />
 
           <motion.div 
             whileHover={{ scale: 1.015 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="relative rounded-3xl p-3 bg-gradient-to-tr from-[#e8d7c8] via-white to-[#e8d7c8] shadow-2xl hover:shadow-3xl hover:shadow-[#e07a5f]/15 border border-[#e8d7c8]/80 w-full group cursor-pointer"
+            className="relative rounded-3xl p-3 bg-gradient-to-tr from-[#e8d7c8] via-white to-[#e8d7c8] shadow-2xl hover:shadow-3xl hover:shadow-[#e07a5f]/25 border border-[#e8d7c8]/80 w-full group cursor-pointer z-10"
           >
-            {/* Broad Landscape Aspect Ratio */}
+            {/* Aspect Ratio Container */}
             <div className="overflow-hidden rounded-2xl relative aspect-[16/9] w-full">
               <motion.img
                 src={img}
@@ -185,4 +207,4 @@ const Hero = () => {
   );
 };
 
-export default Hero; 
+export default Hero;

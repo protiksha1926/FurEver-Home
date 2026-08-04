@@ -1,24 +1,41 @@
-import 'react'
+import React from 'react'
 import Navbar from './components/Navbar'
-import Hero from './components/hero'
-import Services from './components/services'
-import WhyChooseUs from './components/whyChooseUS'
-import AboutUs from './components/aboutUs'
-import Testimonials from './components/testimonials'
-import Faqs from './components/faqs'
-import Footer from './components/footer'
+import Hero from './components/Hero'
+import Services from './components/Services'
+import WhyChooseUs from './components/WhyChooseUs'
+import AboutUs from './components/AboutUs'
+import Testimonials from './components/Testimonials'
+import Faqs from './components/Faqs'
+import Footer from './components/Footer'
+
 const App = () => {
   return (
-    <>
-    <Navbar />
-     <Hero />
-     <Services />   
-     <WhyChooseUs />
-     <AboutUs />
-     <Testimonials />
-     <Faqs />
-     <Footer />
-     </>
+    <div className="relative min-h-screen bg-[#fdf7f2] font-sans antialiased text-[#5a3b1f] selection:bg-[#e07a5f]/20 selection:text-[#e07a5f] scroll-smooth overflow-x-hidden">
+      <Navbar />
+      
+      <main className="relative">
+        <div id="hero">
+          <Hero />
+        </div>
+        <div id="services">
+          <Services />
+        </div>
+        <div id="why-us">
+          <WhyChooseUs />
+        </div>
+        <div id="about">
+          <AboutUs />
+        </div>
+        <div id="testimonials">
+          <Testimonials />
+        </div>
+        <div id="faqs">
+          <Faqs />
+        </div>
+      </main>
+
+      <Footer />
+    </div>
   )
 }
 
