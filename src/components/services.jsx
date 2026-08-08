@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { GiDogHouse, GiSittingDog, GiDogBowl } from "react-icons/gi";
 import { FaUserMd, FaPaw, FaTruck } from "react-icons/fa";
-import { Sparkles, ArrowUpRight } from "lucide-react";
+import { Sparkles, ArrowUpRight, Bone } from "lucide-react";
 
 const petServices = [
   {
@@ -43,27 +43,18 @@ const petServices = [
   },
 ];
 
-// 🐾 Walking Paw Steps (Bridging directly from Hero down into Services)
+// 🐾 Walking Paw Steps
 const activeWalkingTrail = [
-  // Section Bridge Steps (Crossing over top boundary)
   { id: 1, top: "2%", left: "18%", size: "text-4xl", rot: "-rotate-30", delay: 0 },
   { id: 2, top: "6%", left: "24%", size: "text-5xl", rot: "-rotate-10", delay: 0.5 },
-
-  // Header & Grid Entrance
   { id: 3, top: "14%", left: "8%", size: "text-5xl", rot: "-rotate-25", delay: 1.0 },
   { id: 4, top: "24%", left: "42%", size: "text-4xl", rot: "rotate-20", delay: 1.5 },
   { id: 5, top: "32%", left: "54%", size: "text-5xl", rot: "rotate-35", delay: 2.0 },
-
-  // Right Side Upper Trail
   { id: 6, top: "18%", left: "86%", size: "text-6xl", rot: "rotate-45", delay: 2.5 },
   { id: 7, top: "36%", left: "92%", size: "text-5xl", rot: "rotate-15", delay: 3.0 },
-
-  // Lower Left & Bottom Trail
   { id: 8, top: "60%", left: "4%", size: "text-5xl", rot: "-rotate-30", delay: 3.5 },
   { id: 9, top: "74%", left: "10%", size: "text-6xl", rot: "-rotate-10", delay: 4.0 },
   { id: 10, top: "86%", left: "26%", size: "text-5xl", rot: "rotate-25", delay: 4.5 },
-
-  // Bottom Center to Right
   { id: 11, top: "88%", left: "55%", size: "text-6xl", rot: "rotate-15", delay: 5.0 },
   { id: 12, top: "82%", left: "78%", size: "text-5xl", rot: "-rotate-20", delay: 5.5 },
   { id: 13, top: "92%", left: "90%", size: "text-6xl", rot: "-rotate-40", delay: 6.0 },
@@ -73,16 +64,28 @@ export const Services = () => {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-[#f9ede2] via-[#fdf7f2] to-[#f9ede2] pt-20 pb-24 px-6 md:px-14 border-b border-[#e8d7c8]/60">
       
-      {/* 🌊 Seamless Top Organic Curve Transition from Hero */}
+      {/* 🌊 Seamless Top Gradient Blend */}
       <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-[#f9ede2] to-transparent pointer-events-none z-10" />
 
       {/* 🐾 Subtle Black Dot Grid Texture */}
       <div className="absolute inset-0 opacity-[0.035] pointer-events-none mix-blend-multiply bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:16px_16px]" />
 
+      {/* 🦴 Floating Animated Bone Accent */}
+      <motion.div
+        animate={{ 
+          y: [0, -12, 0], 
+          rotate: [0, 15, -10, 0]
+        }}
+        transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+        className="absolute top-12 left-[10%] text-[#e07a5f]/20 pointer-events-none z-0"
+      >
+        <Bone className="h-12 w-12" />
+      </motion.div>
+
       {/* Warm Soft Center Glow */}
       <div className="absolute top-12 left-1/2 -translate-x-1/2 h-[32rem] w-[50rem] rounded-full bg-gradient-to-b from-[#e07a5f]/15 via-[#f2cc8f]/20 to-transparent blur-3xl pointer-events-none" />
 
-      {/* 🐾 Active Walking Paw Prints (Connecting directly from top down) */}
+      {/* 🐾 Active Walking Paw Prints */}
       {activeWalkingTrail.map((paw) => (
         <motion.div
           key={paw.id}
@@ -111,7 +114,13 @@ export const Services = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: -15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-2xl mx-auto space-y-4 mb-16"
+        >
           <span className="inline-flex items-center gap-2 border border-[#d6bda8] bg-white/80 text-[#5a3b1f] px-3.5 py-1 text-xs font-semibold rounded-full backdrop-blur-md shadow-sm">
             <Sparkles className="h-3.5 w-3.5 text-[#e07a5f]" />
             <span>Tail-Wagging Solutions</span>
@@ -124,16 +133,19 @@ export const Services = () => {
           <p className="text-[#5a3b1f]/90 text-base font-medium leading-relaxed">
             We care for your pets like family. Explore our range of trusted pet care services designed for their happiness & your peace of mind.
           </p>
-        </div>
+        </motion.div>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {petServices.map((service, index) => (
             <motion.div
               key={index}
-              whileHover={{ y: -6, scale: 1.01 }}
-              transition={{ duration: 0.2 }}
-              className="group bg-white/80 p-7 rounded-3xl border border-[#e8d7c8]/80 shadow-sm hover:shadow-xl hover:shadow-[#e07a5f]/15 hover:border-[#e07a5f]/40 backdrop-blur-md transition-all duration-300 flex flex-col justify-between cursor-pointer relative z-10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              whileHover={{ y: -6, scale: 1.015 }}
+              className="group bg-white/80 p-7 rounded-3xl border border-[#e8d7c8]/80 shadow-sm hover:shadow-2xl hover:shadow-[#e07a5f]/15 hover:border-[#e07a5f]/40 backdrop-blur-md transition-all duration-300 flex flex-col justify-between cursor-pointer relative z-10"
             >
               <div>
                 <div className="flex items-center justify-between mb-5">
@@ -148,7 +160,7 @@ export const Services = () => {
                 <h3 className="text-xl font-extrabold text-[#5a3b1f] group-hover:text-[#e07a5f] transition-colors duration-200 mb-2">
                   {service.title}
                 </h3>
-                <p className="text-[#7d5b40] text-sm leading-relaxed">
+                <p className="text-[#7d5b40] text-sm leading-relaxed font-medium">
                   {service.desc}
                 </p>
               </div>
