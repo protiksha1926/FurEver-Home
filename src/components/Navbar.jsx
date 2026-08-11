@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiSearch, FiHeart, FiShoppingBag, FiUser, FiX, FiMenu, FiChevronDown } from "react-icons/fi";
 import { FaPaw } from "react-icons/fa";
-import { Scissors, Stethoscope, GraduationCap, Dog } from "lucide-react";
+import { Scissors, Stethoscope, GraduationCap, Dog, Sparkles } from "lucide-react";
 
 const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -24,8 +24,8 @@ const Navbar = () => {
 
   return (
     <div className="sticky top-0 z-50 w-full px-4 lg:px-12 py-3 transition-all duration-300">
-      <header className={`max-w-7xl mx-auto rounded-full border bg-white/90 backdrop-blur-md transition-all duration-300 ${
-        scrolled ? "shadow-lg shadow-[#e07a5f]/10 border-[#e8d7c8] py-2 px-6" : "border-[#e8d7c8]/80 py-2.5 px-6"
+      <header className={`max-w-7xl mx-auto rounded-3xl md:rounded-full border bg-white/90 backdrop-blur-md transition-all duration-300 ${
+        scrolled ? "shadow-lg shadow-[#e07a5f]/10 border-[#e8d7c8] py-2.5 px-6" : "border-[#e8d7c8]/80 py-3 px-6"
       }`}>
         <div className="flex justify-between items-center">
           
@@ -50,24 +50,34 @@ const Navbar = () => {
             
             <div className="relative" onMouseEnter={() => setShowDropdown(true)} onMouseLeave={() => setShowDropdown(false)}>
               <a href="#services" className="px-3.5 py-1.5 rounded-full flex items-center gap-1 hover:bg-[#e07a5f]/10 hover:text-[#e07a5f] transition-all">
-                Services <FiChevronDown className={`transition-transform ${showDropdown ? "rotate-180 text-[#e07a5f]" : ""}`} />
+                Services <FiChevronDown className={`transition-transform duration-200 ${showDropdown ? "rotate-180 text-[#e07a5f]" : ""}`} />
               </a>
 
               <AnimatePresence>
                 {showDropdown && (
                   <motion.div 
-                    initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 6 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 bg-white/95 border border-[#e8d7c8] shadow-xl shadow-[#e07a5f]/10 rounded-2xl p-2 z-50 capitalize backdrop-blur-md"
+                    initial={{ opacity: 0, y: 8, scale: 0.98 }} 
+                    animate={{ opacity: 1, y: 0, scale: 1 }} 
+                    exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 bg-white/95 border border-[#e8d7c8] shadow-2xl shadow-[#e07a5f]/15 rounded-3xl p-3 z-50 capitalize backdrop-blur-md"
                   >
                     {serviceCategories.map((item, idx) => {
                       const IconComp = item.icon;
                       return (
-                        <a key={idx} href={item.href} className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#fff0e5] group transition-colors">
-                          <div className="h-8 w-8 rounded-lg bg-[#e07a5f]/10 text-[#e07a5f] group-hover:bg-[#e07a5f] group-hover:text-white transition-colors flex items-center justify-center shrink-0">
+                        <a key={idx} href={item.href} className="flex items-center gap-3 p-2.5 rounded-2xl hover:bg-[#fff0e5] group transition-colors relative">
+                          <div className="h-9 w-9 rounded-xl bg-[#e07a5f]/10 text-[#e07a5f] group-hover:bg-[#e07a5f] group-hover:text-white transition-colors flex items-center justify-center shrink-0 shadow-sm">
                             <IconComp className="h-4 w-4" />
                           </div>
-                          <div>
-                            <p className="text-xs font-extrabold text-[#5a3b1f] group-hover:text-[#e07a5f] transition-colors">{item.title}</p>
+                          <div className="flex-1">
+                            <div className="flex items-center justify-between">
+                              <p className="text-xs font-extrabold text-[#5a3b1f] group-hover:text-[#e07a5f] transition-colors">{item.title}</p>
+                              {item.badge && (
+                                <span className="text-[9px] font-bold text-[#e07a5f] bg-[#e07a5f]/10 px-2 py-0.5 rounded-full">
+                                  {item.badge}
+                                </span>
+                              )}
+                            </div>
                             <p className="text-[11px] text-[#7d5b40] font-medium">{item.desc}</p>
                           </div>
                         </a>
@@ -84,18 +94,22 @@ const Navbar = () => {
             <a href="#faqs" className="px-3.5 py-1.5 rounded-full hover:bg-[#e07a5f]/10 hover:text-[#e07a5f] transition-all">FAQs</a>
           </nav>
 
-          {/* Right Action Icons & Button */}
+          {/* Right Action Icons & CTA */}
           <div className="hidden lg:flex items-center gap-1.5">
-            <button className="p-2 rounded-full text-[#5a3b1f] hover:bg-[#e07a5f]/10 hover:text-[#e07a5f] transition-colors"><FiSearch className="text-base" /></button>
-            <button className="p-2 rounded-full text-[#5a3b1f] hover:bg-[#e07a5f]/10 hover:text-[#e07a5f] transition-colors relative">
+            <button className="p-2 rounded-full text-[#5a3b1f] hover:bg-[#e07a5f]/10 hover:text-[#e07a5f] transition-colors cursor-pointer">
+              <FiSearch className="text-base" />
+            </button>
+            <button className="p-2 rounded-full text-[#5a3b1f] hover:bg-[#e07a5f]/10 hover:text-[#e07a5f] transition-colors relative cursor-pointer">
               <FiHeart className="text-base" />
-              <span className="absolute top-0.5 right-0.5 h-3.5 w-3.5 bg-[#e07a5f] text-white text-[9px] font-bold rounded-full flex items-center justify-center">2</span>
+              <span className="absolute top-0.5 right-0.5 h-3.5 w-3.5 bg-[#e07a5f] text-white text-[9px] font-bold rounded-full flex items-center justify-center shadow-sm">2</span>
             </button>
-            <button className="p-2 rounded-full text-[#5a3b1f] hover:bg-[#e07a5f]/10 hover:text-[#e07a5f] transition-colors relative">
+            <button className="p-2 rounded-full text-[#5a3b1f] hover:bg-[#e07a5f]/10 hover:text-[#e07a5f] transition-colors relative cursor-pointer">
               <FiShoppingBag className="text-base" />
-              <span className="absolute top-0.5 right-0.5 h-3.5 w-3.5 bg-[#e07a5f] text-white text-[9px] font-bold rounded-full flex items-center justify-center">3</span>
+              <span className="absolute top-0.5 right-0.5 h-3.5 w-3.5 bg-[#e07a5f] text-white text-[9px] font-bold rounded-full flex items-center justify-center shadow-sm">3</span>
             </button>
-            <button className="p-2 rounded-full text-[#5a3b1f] hover:bg-[#e07a5f]/10 hover:text-[#e07a5f] transition-colors mr-2"><FiUser className="text-base" /></button>
+            <button className="p-2 rounded-full text-[#5a3b1f] hover:bg-[#e07a5f]/10 hover:text-[#e07a5f] transition-colors mr-2 cursor-pointer">
+              <FiUser className="text-base" />
+            </button>
             
             <motion.a 
               whileHover={{ scale: 1.04, y: -1 }}
@@ -107,9 +121,12 @@ const Navbar = () => {
             </motion.a>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden p-1.5 text-[#5a3b1f]">
-            {menuOpen ? <FiX size={22} /> : <FiMenu size={22} />}
+          {/* Mobile Menu Toggle Button */}
+          <button 
+            onClick={() => setMenuOpen(!menuOpen)} 
+            className="md:hidden h-9 w-9 rounded-xl bg-[#f5e9df]/70 text-[#5a3b1f] flex items-center justify-center border border-[#e8d7c8] cursor-pointer"
+          >
+            {menuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
           </button>
         </div>
 
@@ -120,18 +137,32 @@ const Navbar = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden mt-3 pt-3 border-t border-[#e8d7c8]/60 flex flex-col gap-2 font-semibold text-[#5a3b1f] text-xs uppercase"
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="md:hidden overflow-hidden mt-3 pt-3 border-t border-[#e8d7c8]/60 flex flex-col gap-1.5 font-semibold text-[#5a3b1f] text-xs uppercase"
             >
-              <a href="#hero" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-xl hover:bg-[#e07a5f]/10 hover:text-[#e07a5f]">Home</a>
-              <a href="#services" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-xl hover:bg-[#e07a5f]/10 hover:text-[#e07a5f]">Services</a>
-              <a href="#why-us" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-xl hover:bg-[#e07a5f]/10 hover:text-[#e07a5f]">Why Us</a>
-              <a href="#about" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-xl hover:bg-[#e07a5f]/10 hover:text-[#e07a5f]">About</a>
-              <a href="#testimonials" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-xl hover:bg-[#e07a5f]/10 hover:text-[#e07a5f]">Reviews</a>
-              <a href="#faqs" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-xl hover:bg-[#e07a5f]/10 hover:text-[#e07a5f]">FAQs</a>
-              
-              <a href="#services" onClick={() => setMenuOpen(false)} className="mt-2 text-center bg-[#e07a5f] text-white font-bold py-3 rounded-2xl shadow-md">
-                Book Appointment
+              <a href="#hero" onClick={() => setMenuOpen(false)} className="px-4 py-2.5 rounded-2xl hover:bg-[#e07a5f]/10 hover:text-[#e07a5f] transition-colors flex items-center justify-between">
+                <span>Home</span>
+                <span className="text-xs text-[#e07a5f]">🐾</span>
               </a>
+              <a href="#services" onClick={() => setMenuOpen(false)} className="px-4 py-2.5 rounded-2xl hover:bg-[#e07a5f]/10 hover:text-[#e07a5f] transition-colors flex items-center justify-between">
+                <span>Services</span>
+                <span className="text-[10px] bg-[#e07a5f]/10 text-[#e07a5f] px-2 py-0.5 rounded-full">Popular</span>
+              </a>
+              <a href="#why-us" onClick={() => setMenuOpen(false)} className="px-4 py-2.5 rounded-2xl hover:bg-[#e07a5f]/10 hover:text-[#e07a5f] transition-colors">Why Us</a>
+              <a href="#about" onClick={() => setMenuOpen(false)} className="px-4 py-2.5 rounded-2xl hover:bg-[#e07a5f]/10 hover:text-[#e07a5f] transition-all">About</a>
+              <a href="#testimonials" onClick={() => setMenuOpen(false)} className="px-4 py-2.5 rounded-2xl hover:bg-[#e07a5f]/10 hover:text-[#e07a5f] transition-all">Reviews</a>
+              <a href="#faqs" onClick={() => setMenuOpen(false)} className="px-4 py-2.5 rounded-2xl hover:bg-[#e07a5f]/10 hover:text-[#e07a5f] transition-all">FAQs</a>
+              
+              <div className="pt-2">
+                <a 
+                  href="#services" 
+                  onClick={() => setMenuOpen(false)} 
+                  className="w-full flex items-center justify-center gap-2 bg-[#e07a5f] text-white font-bold py-3 rounded-2xl shadow-lg shadow-[#e07a5f]/25 text-xs tracking-wider"
+                >
+                  <Sparkles className="h-3.5 w-3.5" />
+                  <span>Book Appointment</span>
+                </a>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
