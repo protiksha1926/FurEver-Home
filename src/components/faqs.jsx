@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronDown } from "react-icons/fa";
-import { Sparkles, HelpCircle, Bone, Sparkle } from "lucide-react";
+import { Sparkles, HelpCircle, Bone } from "lucide-react";
 
 const faqs = [
   {

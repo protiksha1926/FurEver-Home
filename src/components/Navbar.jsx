@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiSearch, FiHeart, FiShoppingBag, FiUser, FiX, FiMenu, FiChevronDown } from "react-icons/fi";
 import { FaPaw } from "react-icons/fa";

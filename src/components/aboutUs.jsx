@@ -1,4 +1,4 @@
-import React from "react";
+import "react";
 import { motion } from "framer-motion";
 import { Heart, ShieldCheck, Award, Sparkles, ArrowRight, Sparkle, Bone } from "lucide-react";
 import img from "../assets/about_puppy.png";

@@ -1,4 +1,4 @@
-import React from "react";
+import "react";
 import { motion } from "framer-motion";
 import { GiDogHouse, GiSittingDog, GiDogBowl } from "react-icons/gi";
 import { FaUserMd, FaPaw, FaTruck } from "react-icons/fa";
