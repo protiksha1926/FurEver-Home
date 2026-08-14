@@ -62,8 +62,10 @@ const activeWalkingTrail = [
 
 export const Services = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#f9ede2] via-[#fdf7f2] to-[#f9ede2] pt-20 pb-24 px-6 md:px-14 border-b border-[#e8d7c8]/60">
-      
+    <section 
+      id="services"
+      className="relative overflow-hidden bg-gradient-to-b from-[#f9ede2] via-[#fdf7f2] to-[#f9ede2] pt-20 pb-24 px-6 md:px-14 border-b border-[#e8d7c8]/60"
+    >
       {/* 🌊 Seamless Top Gradient Blend */}
       <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-[#f9ede2] to-transparent pointer-events-none z-10" />
 
@@ -112,7 +114,6 @@ export const Services = () => {
       ))}
 
       <div className="max-w-7xl mx-auto relative z-10">
-        
         {/* Section Header */}
         <motion.div 
           initial={{ opacity: 0, y: -15 }}
